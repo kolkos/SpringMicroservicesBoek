@@ -7,6 +7,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
@@ -30,6 +33,20 @@ class ApplicationTests {
 
         Assertions.assertEquals("Hello World!", response.getBody().getMessage());
 
+    }
+
+    @Test
+    public void testOAuthService() {
+        ResourceOwnerPasswordResourceDetails resourceDetails = new ResourceOwnerPasswordResourceDetails();
+        resourceDetails.setUsername("guest");
+        resourceDetails.setPassword("guest123");
+        resourceDetails.setAccessTokenUri("http://localhost:8080/oauth/token");
+        resourceDetails.setClientId("trustedClient");
+        resourceDetails.setClientSecret("trustedClient123");
+        resourceDetails.setGrantType("password");
+
+        DefaultOAuth2ClientContext clientContext = new DefaultOAuth2ClientContext();
+        OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, clientContext);
     }
 
 }
