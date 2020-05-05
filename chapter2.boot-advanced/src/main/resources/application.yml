@@ -1,3 +1,6 @@
-logging:
-  level:
-    root: debug
+security:
+  user:
+    name: guest
+    password: guest123
+bootrest:
+  customproperty: Testje
