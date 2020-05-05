@@ -1,6 +1,6 @@
 package chapter2.bootrest;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
@@ -28,7 +28,7 @@ class ApplicationTests {
                 request,
                 Greet.class);
 
-        Assert.assertEquals("Hello World!", response.getBody().getMessage());
+        Assertions.assertEquals("Hello World!", response.getBody().getMessage());
 
     }
 

@@ -1,6 +1,7 @@
-security:
-  user:
-    name: guest
-    password: guest123
+spring:
+  security:
+    user:
+      name: guest
+      password: guest123
 bootrest:
   customproperty: Testje
