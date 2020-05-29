@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 30672
+    username: rabbitmq
+    password: LUvcGMrajovrkuBx
+  mail:
+    host: localhost
+    port: 32525
+server:
+  port: 8081
