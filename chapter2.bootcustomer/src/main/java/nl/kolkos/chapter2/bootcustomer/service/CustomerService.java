@@ -13,6 +13,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
+    private final Sender sender;
+
+
 
     public Customer register(Customer customer) {
         Optional<Customer> existingCustomer = customerRepository.findByName(customer.getName());
@@ -20,6 +23,11 @@ public class CustomerService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer already exists");
         }
 
-        return customerRepository.save(customer);
+        customerRepository.save(customer);
+        sender.send(customer.getEmail());
+
+        return customer;
     }
+
+
 }
