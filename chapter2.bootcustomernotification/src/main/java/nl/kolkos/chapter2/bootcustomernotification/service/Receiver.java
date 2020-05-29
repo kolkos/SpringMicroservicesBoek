@@ -22,7 +22,7 @@ public class Receiver {
 
     @RabbitListener(queues = QUEUE_NAME)
     public void processMessage(String email) {
-        log.info(email);
+        log.info("Received message: '{}'", email);
         mailer.sendMail(email);
     }
 }
